@@ -25,7 +25,13 @@ export default function ProjectCard({ title, description, image, tags, link, cla
       transition={{ duration: 0.5 }}
       viewport={{ once: true }}
     >
-      <Link href={link} className={cn("group relative block overflow-hidden rounded-lg", className)}>
+      <Link
+        href={link}
+        className={cn(
+          "group relative block overflow-hidden rounded-lg",
+          className
+        )}
+      >
         <div className="relative aspect-video overflow-hidden rounded-t-lg">
           <motion.img
             src={image || "/placeholder.svg"}
@@ -46,18 +52,22 @@ export default function ProjectCard({ title, description, image, tags, link, cla
               <ArrowUpRight className="h-4 w-4" />
             </motion.span>
           </h3>
-          <p className="mt-2 text-sm text-muted-foreground line-clamp-2">{date}</p>
-          <p className="mt-2 text-sm text-muted-foreground line-clamp-2">{description}</p>
+          <p className="mt-2 text-sm text-muted-foreground line-clamp-2">
+            {date}
+          </p>
+          <p className="mt-2 text-sm text-muted-foreground line-clamp-2">
+            {description}
+          </p>
           <div className="mt-3 flex flex-wrap gap-2">
-            {tags && tags.map((tag) => (
-              <Badge key={tag} variant="secondary" className="text-xs">
-                {tag}
-              </Badge>
-            ))}
+            {tags &&
+              tags.map((tag) => (
+                <Badge key={tag} variant="secondary" className="text-xs">
+                  {tag}
+                </Badge>
+              ))}
           </div>
         </div>
       </Link>
     </motion.div>
-  )
+  );
 }
-

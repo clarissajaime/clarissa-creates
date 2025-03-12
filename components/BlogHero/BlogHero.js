@@ -1,32 +1,17 @@
-import React from 'react';
-import { format } from 'date-fns';
-import clsx from 'clsx';
+import React from "react";
+import clsx from "clsx";
+import { humanizedDate } from "@/helpers/file-helpers";
 
-import styles from './BlogHero.module.css';
+import styles from "./BlogHero.module.css";
 
-function BlogHero({
-  title,
-  publishedOn,
-  className,
-  ...delegated
-}) {
-  const humanizedDate = format(
-    new Date(publishedOn),
-    'MMMM do, yyyy'
-  );
-
+function BlogHero({ title, publishedOn, className, ...delegated }) {
   return (
-    <header
-      className={clsx(styles.wrapper, className)}
-      {...delegated}
-    >
+    <header className={clsx(styles.wrapper, className)} {...delegated}>
       <div className={styles.content}>
         <h1>{title}</h1>
         <p>
-          Published on{' '}
-          <time dateTime={publishedOn}>
-            {humanizedDate}
-          </time>
+          Published on{" "}
+          <time dateTime={publishedOn}>{humanizedDate(publishedOn)}</time>
         </p>
       </div>
     </header>
