@@ -7,10 +7,12 @@ import FloatingIcons from "@/components/floating-icons";
 import AnimatedGradientText from "@/components/animated-gradient-text";
 import AnimatedH1 from "@/components/animated-h1";
 import BlogSummaryCard from "@/components/BlogSummaryCard";
-import { getBlogPostList, humanizedDate } from "@/helpers/file-helpers";
+import { getBlogPostList } from "@/helpers/file-helpers";
+import { humanizedDate } from "@/helpers/date-helpers";
 
 export default async function Home() {
   const blogPosts = await getBlogPostList();
+
   return (
     <div className="flex min-h-screen flex-col">
       <AnimatedDoodles />
@@ -61,7 +63,7 @@ export default async function Home() {
                 ({ slug, title, publishedOn, abstract, tags, image }) => (
                   <BlogSummaryCard
                     key={slug}
-                    slug={slug}
+                    slug={`blog/${slug}`}
                     title={title}
                     publishedOn={humanizedDate(publishedOn)}
                     abstract={abstract}

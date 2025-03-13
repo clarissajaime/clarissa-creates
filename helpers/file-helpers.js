@@ -1,7 +1,6 @@
 import fs from 'fs/promises';
 import path from 'path';
-import matter from 'gray-matter';
-import { format } from "date-fns";
+import matter from "gray-matter";
 
 export async function getBlogPostList() {
   const fileNames = await readDirectory("/content");
@@ -61,14 +60,3 @@ function readDirectory(localPath) {
   return fs.readdir(path.join(process.cwd(), localPath));
 }
 
-// export async function humanizedDate(date) {
-//   format(new Date(date), "MMMM do, yyyy");
-// }
-
-export function humanizedDate(date) {
-  return new Date(date).toLocaleDateString("en-US", {
-    month: "long",
-    day: "numeric",
-    year: "numeric",
-  });
-}

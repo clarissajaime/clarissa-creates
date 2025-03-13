@@ -21,7 +21,13 @@ export default function AnimatedDoodles() {
         animate={{ opacity: 0.7, scale: 1, rotate: 0 }}
         transition={{ duration: 1, delay: 0.2 }}
       >
-        <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg
+          width="120"
+          height="120"
+          viewBox="0 0 120 120"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
           <path
             d="M40 20C30 30 25 50 25 60C25 70 30 90 40 100"
             stroke="currentColor"
@@ -46,7 +52,13 @@ export default function AnimatedDoodles() {
         animate={{ opacity: 0.7, y: 0 }}
         transition={{ duration: 1, delay: 0.5 }}
       >
-        <svg width="100" height="120" viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg
+          width="100"
+          height="120"
+          viewBox="0 0 100 120"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
           <path
             d="M50 5C35 5 20 20 20 40C20 55 35 65 40 70C45 75 45 80 45 85V95H55V85C55 80 55 75 60 70C65 65 80 55 80 40C80 20 65 5 50 5Z"
             stroke="currentColor"
@@ -54,8 +66,18 @@ export default function AnimatedDoodles() {
             strokeLinecap="round"
             strokeLinejoin="round"
           />
-          <path d="M40 105H60" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
-          <path d="M45 115H55" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+          <path
+            d="M40 105H60"
+            stroke="currentColor"
+            strokeWidth="3"
+            strokeLinecap="round"
+          />
+          <path
+            d="M45 115H55"
+            stroke="currentColor"
+            strokeWidth="3"
+            strokeLinecap="round"
+          />
           <path
             d="M40 40L50 50L60 40"
             stroke="currentColor"
@@ -73,7 +95,13 @@ export default function AnimatedDoodles() {
         animate={{ opacity: 0.7, rotate: 0 }}
         transition={{ duration: 1, delay: 0.8 }}
       >
-        <svg width="120" height="100" viewBox="0 0 120 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg
+          width="120"
+          height="100"
+          viewBox="0 0 120 100"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
           <path
             d="M10 15C10 10 15 5 20 5H100C105 5 110 10 110 15V85C110 90 105 95 100 95H20C15 95 10 90 10 85V15Z"
             stroke="currentColor"
@@ -81,13 +109,48 @@ export default function AnimatedDoodles() {
             strokeLinecap="round"
             strokeLinejoin="round"
           />
-          <path d="M60 5V95" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
-          <path d="M30 30H40" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
-          <path d="M30 50H40" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
-          <path d="M30 70H40" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
-          <path d="M80 30H90" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
-          <path d="M80 50H90" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
-          <path d="M80 70H90" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+          <path
+            d="M60 5V95"
+            stroke="currentColor"
+            strokeWidth="3"
+            strokeLinecap="round"
+          />
+          <path
+            d="M30 30H40"
+            stroke="currentColor"
+            strokeWidth="3"
+            strokeLinecap="round"
+          />
+          <path
+            d="M30 50H40"
+            stroke="currentColor"
+            strokeWidth="3"
+            strokeLinecap="round"
+          />
+          <path
+            d="M30 70H40"
+            stroke="currentColor"
+            strokeWidth="3"
+            strokeLinecap="round"
+          />
+          <path
+            d="M80 30H90"
+            stroke="currentColor"
+            strokeWidth="3"
+            strokeLinecap="round"
+          />
+          <path
+            d="M80 50H90"
+            stroke="currentColor"
+            strokeWidth="3"
+            strokeLinecap="round"
+          />
+          <path
+            d="M80 70H90"
+            stroke="currentColor"
+            strokeWidth="3"
+            strokeLinecap="round"
+          />
         </svg>
       </motion.div>
 
@@ -98,7 +161,13 @@ export default function AnimatedDoodles() {
         animate={{ opacity: 0.7, scale: 1 }}
         transition={{ duration: 1, delay: 1 }}
       >
-        <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg
+          width="120"
+          height="120"
+          viewBox="0 0 120 120"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
           <rect
             x="30"
             y="40"
@@ -112,13 +181,48 @@ export default function AnimatedDoodles() {
           />
           <circle cx="45" cy="60" r="5" stroke="currentColor" strokeWidth="3" />
           <circle cx="75" cy="60" r="5" stroke="currentColor" strokeWidth="3" />
-          <path d="M50 80H70" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
-          <path d="M60 10V30" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
-          <path d="M40 20H80" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
-          <path d="M20 60H10" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
-          <path d="M100 60H110" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
-          <path d="M30 110L40 100" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
-          <path d="M90 110L80 100" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+          <path
+            d="M50 80H70"
+            stroke="currentColor"
+            strokeWidth="3"
+            strokeLinecap="round"
+          />
+          <path
+            d="M60 10V30"
+            stroke="currentColor"
+            strokeWidth="3"
+            strokeLinecap="round"
+          />
+          <path
+            d="M40 20H80"
+            stroke="currentColor"
+            strokeWidth="3"
+            strokeLinecap="round"
+          />
+          <path
+            d="M20 60H10"
+            stroke="currentColor"
+            strokeWidth="3"
+            strokeLinecap="round"
+          />
+          <path
+            d="M100 60H110"
+            stroke="currentColor"
+            strokeWidth="3"
+            strokeLinecap="round"
+          />
+          <path
+            d="M30 110L40 100"
+            stroke="currentColor"
+            strokeWidth="3"
+            strokeLinecap="round"
+          />
+          <path
+            d="M90 110L80 100"
+            stroke="currentColor"
+            strokeWidth="3"
+            strokeLinecap="round"
+          />
         </svg>
       </motion.div>
 
@@ -129,7 +233,13 @@ export default function AnimatedDoodles() {
         animate={{ opacity: 0.7, x: 0 }}
         transition={{ duration: 1, delay: 1.2 }}
       >
-        <svg width="100" height="80" viewBox="0 0 100 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg
+          width="100"
+          height="80"
+          viewBox="0 0 100 80"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
           <path
             d="M90 35C90 50 75 65 50 65C45 65 40 64 35 63L15 75L20 55C15 50 10 43 10 35C10 20 25 5 50 5C75 5 90 20 90 35Z"
             stroke="currentColor"
@@ -137,9 +247,24 @@ export default function AnimatedDoodles() {
             strokeLinecap="round"
             strokeLinejoin="round"
           />
-          <path d="M30 25L70 25" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
-          <path d="M30 35L60 35" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
-          <path d="M30 45L50 45" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+          <path
+            d="M30 25L70 25"
+            stroke="currentColor"
+            strokeWidth="3"
+            strokeLinecap="round"
+          />
+          <path
+            d="M30 35L60 35"
+            stroke="currentColor"
+            strokeWidth="3"
+            strokeLinecap="round"
+          />
+          <path
+            d="M30 45L50 45"
+            stroke="currentColor"
+            strokeWidth="3"
+            strokeLinecap="round"
+          />
         </svg>
       </motion.div>
 
@@ -150,7 +275,13 @@ export default function AnimatedDoodles() {
         animate={{ opacity: 0.7, x: 0 }}
         transition={{ duration: 1, delay: 1.5 }}
       >
-        <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg
+          width="100"
+          height="100"
+          viewBox="0 0 100 100"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
           <path
             d="M20 20H30V40H20V20Z"
             stroke="currentColor"
@@ -198,7 +329,7 @@ export default function AnimatedDoodles() {
 
       {/* Floating elements */}
       <motion.div
-        className="absolute top-[30%] left-[20%] dark:text-slate-700 text-slate-200 opacity-70"
+        className="absolute top-[10%] left-[20%] dark:text-slate-700 text-slate-200 opacity-70"
         animate={{
           y: [0, -10, 0],
           rotate: [0, 5, 0],
@@ -209,7 +340,13 @@ export default function AnimatedDoodles() {
           repeatType: "reverse",
         }}
       >
-        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg
+          width="40"
+          height="40"
+          viewBox="0 0 40 40"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
           <path
             d="M20 5L25 15L35 17L28 25L30 35L20 30L10 35L12 25L5 17L15 15L20 5Z"
             stroke="currentColor"
@@ -233,7 +370,13 @@ export default function AnimatedDoodles() {
           delay: 0.5,
         }}
       >
-        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg
+          width="40"
+          height="40"
+          viewBox="0 0 40 40"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
           <circle
             cx="20"
             cy="20"
@@ -260,7 +403,13 @@ export default function AnimatedDoodles() {
           delay: 1,
         }}
       >
-        <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg
+          width="30"
+          height="30"
+          viewBox="0 0 30 30"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
           <path
             d="M5 15L15 5L25 15L15 25L5 15Z"
             stroke="currentColor"
@@ -271,6 +420,6 @@ export default function AnimatedDoodles() {
         </svg>
       </motion.div>
     </div>
-  )
+  );
 }
 

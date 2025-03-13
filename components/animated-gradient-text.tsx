@@ -17,6 +17,6 @@ export default function AnimatedGradientText({ text, className = "" }: AnimatedG
     >
       {text}
     </motion.span>
-  )
+  );
 }
 

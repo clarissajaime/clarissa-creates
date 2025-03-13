@@ -1,6 +1,6 @@
 import React from "react";
 import clsx from "clsx";
-import { humanizedDate } from "@/helpers/file-helpers";
+import { humanizedDate } from "@/helpers/date-helpers";
 
 import styles from "./BlogHero.module.css";
 
