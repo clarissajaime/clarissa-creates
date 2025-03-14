@@ -1,10 +1,12 @@
-import Link from "next/link"
+"use client";
+import Link from "next/link";
 import { Github, Linkedin, Mail } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import AnimatedGradientText from "@/components/animated-gradient-text";
 import AnimatedDoodles from "@/components/animated-doodles";
+import { motion } from "framer-motion";
 
 export default function AboutPage() {
   return (
@@ -18,8 +20,13 @@ export default function AboutPage() {
           />
         </h1>
       </div>
-
-      <div className="grid gap-8 md:grid-cols-3">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        viewport={{ once: true, amount: 0.3 }}
+        className="grid gap-8 md:grid-cols-3"
+      >
         <div className="md:col-span-1">
           <Card>
             <CardContent className="p-6">
@@ -64,25 +71,26 @@ export default function AboutPage() {
           <div>
             <h2 className="text-2xl font-bold mb-4">About Me</h2>
             <div className="prose dark:prose-invert max-w-none">
-              <p>
-                Hello! I'm John, an AI researcher and educator passionate about
-                the intersection of artificial intelligence and learning. With
-                over 10 years of experience in the field, I've dedicated my
-                career to developing AI solutions that enhance educational
-                experiences and make learning more accessible and effective.
+              <p className="mb-3">
+                Hi! I'm Clarissa Jaime, a software engineer and educator with a
+                passion for building scalable, user-friendly applications and
+                empowering the next generation of developers. With experience
+                spanning education, e-commerce, and media, I specialize in
+                frontend development, curriculum design, and technical training.
               </p>
-              <p>
-                My research focuses on natural language processing, computer
-                vision, and their applications in educational technology. I
-                believe that AI has the potential to transform how we learn and
-                teach, making education more personalized, engaging, and
-                effective.
+              <p className="mb-3">
+                I've taught software engineering at multiple coding bootcamps,
+                helping students build strong foundations in JavaScript, React,
+                and full-stack development. Beyond teaching, my industry
+                experience includes working as a software engineer at companies
+                like Amazon, Column, and 2U, where I contributed to frontend
+                architecture, optimized system performance, and developed
+                learning management solutions.
               </p>
-              <p>
-                When I'm not coding or researching, I enjoy sharing my knowledge
-                through writing, speaking at conferences, and mentoring aspiring
-                AI practitioners. This blog is my platform to share insights,
-                projects, and thoughts on AI and education.
+              <p className="mb-3">
+                When I'm not coding or mentoring, I enjoy refining curriculum
+                content, writing technical documentation, and advocating for
+                accessible and effective education in tech.
               </p>
             </div>
           </div>
@@ -92,37 +100,38 @@ export default function AboutPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <Card>
                 <CardContent className="p-6">
-                  <h3 className="font-bold mb-2">Artificial Intelligence</h3>
+                  <h3 className="font-bold mb-2">Software Engineering</h3>
                   <p className="text-sm text-muted-foreground">
-                    Machine learning, deep learning, natural language
-                    processing, and computer vision
+                    Frontend development (React, TypeScript, Next.js), API
+                    integration (GraphQL, Firebase)
                   </p>
                 </CardContent>
               </Card>
               <Card>
                 <CardContent className="p-6">
-                  <h3 className="font-bold mb-2">Education Technology</h3>
+                  <h3 className="font-bold mb-2">Education & Training</h3>
                   <p className="text-sm text-muted-foreground">
-                    Learning analytics, adaptive learning systems, and
-                    educational content creation
+                    Curriculum development, technical instruction, mentoring
                   </p>
                 </CardContent>
               </Card>
               <Card>
                 <CardContent className="p-6">
-                  <h3 className="font-bold mb-2">Software Development</h3>
+                  <h3 className="font-bold mb-2">
+                    User Experience & Design Systems
+                  </h3>
                   <p className="text-sm text-muted-foreground">
-                    Full-stack development, React, Next.js, Python, and
-                    TensorFlow
+                    UI/UX improvements, performance optimization, accessibility
+                    best practices
                   </p>
                 </CardContent>
               </Card>
               <Card>
                 <CardContent className="p-6">
-                  <h3 className="font-bold mb-2">Research & Writing</h3>
+                  <h3 className="font-bold mb-2">Agile Development</h3>
                   <p className="text-sm text-muted-foreground">
-                    Academic research, technical writing, and educational
-                    content development
+                    Sprint planning, cross-functional collaboration, process
+                    optimization
                   </p>
                 </CardContent>
               </Card>
@@ -133,42 +142,70 @@ export default function AboutPage() {
             <h2 className="text-2xl font-bold mb-4">Experience</h2>
             <div className="space-y-4">
               <div className="border-l-2 border-primary pl-4 py-1">
-                <h3 className="font-bold">Senior AI Researcher</h3>
+                <h3 className="font-bold">Software Engineering Instructor</h3>
                 <p className="text-sm text-muted-foreground">
-                  TechCorp • 2020 - Present
+                  Austin Coding Academy, Agile Academy (Freelance) • Apr 2024 -
+                  Present
                 </p>
                 <p className="mt-2">
-                  Leading research in AI applications for educational
-                  technology, focusing on personalized learning systems and
-                  intelligent tutoring.
+                  Taught software engineering fundamentals and mentored students
+                  in product management.
                 </p>
               </div>
               <div className="border-l-2 border-muted pl-4 py-1">
-                <h3 className="font-bold">Assistant Professor</h3>
+                <h3 className="font-bold">Software Engineering Instructor</h3>
                 <p className="text-sm text-muted-foreground">
-                  University of Technology • 2017 - 2020
+                  Hack Reactor / Galvanize • Jan 2023 - Jan 2024
                 </p>
                 <p className="mt-2">
-                  Taught courses in machine learning and AI, supervised graduate
-                  research, and published papers on educational applications of
-                  AI.
+                  Led technical training, launched a new TypeScript & Next.js
+                  program, and redesigned the CSS curriculum.
                 </p>
               </div>
               <div className="border-l-2 border-muted pl-4 py-1">
-                <h3 className="font-bold">AI Engineer</h3>
+                <h3 className="font-bold">Web Development Engineer</h3>
                 <p className="text-sm text-muted-foreground">
-                  EdTech Innovations • 2014 - 2017
+                  Amazon (Contract) • Oct 2022 - Jan 2023
                 </p>
                 <p className="mt-2">
-                  Developed AI-powered learning tools and analytics platforms
-                  for K-12 and higher education institutions.
+                  Led a team to migrate 10+ advertising websites, optimizing
+                  performance and ad effectiveness.
+                </p>
+              </div>
+              <div className="border-l-2 border-muted pl-4 py-1">
+                <h3 className="font-bold">Software Engineer</h3>
+                <p className="text-sm text-muted-foreground">
+                  Column • Mar 2021 - Sept 2022
+                </p>
+                <p className="mt-2">
+                  Built internal tools, enhanced system reliability, and
+                  championed Agile practices.
+                </p>
+              </div>
+              <div className="border-l-2 border-muted pl-4 py-1">
+                <h3 className="font-bold">Software Engineer</h3>
+                <p className="text-sm text-muted-foreground">
+                  2U, Inc • Apr 2019 - Feb 2021
+                </p>
+                <p className="mt-2">
+                  Improved the LMS front-end, developed a scalable design
+                  system, and optimized API data fetching with GraphQL.
+                </p>
+              </div>
+              <div className="border-l-2 border-muted pl-4 py-1">
+                <h3 className="font-bold">UX Engineer</h3>
+                <p className="text-sm text-muted-foreground">
+                  2U, Inc • Jun 2017 - Apr 2019
+                </p>
+                <p className="mt-2">
+                  Standardized branding, improved infrastructure reliability,
+                  and contributed to UX design sprints.
                 </p>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }
-
