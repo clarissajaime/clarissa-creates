@@ -4,8 +4,9 @@ import PrimaryHeader from "@/components/PrimaryHeader";
 import PrimaryFooter from "@/components/PrimaryFooter";
 
 export const metadata: Metadata = {
-  title: "v0 App",
-  description: "Created with v0",
+  title: "Clarissa Creates",
+  description:
+    "Hi! I'm Clarissa Jaime, a software engineer and educator with a passion for building scalable, user-friendly applications and empowering the next generation of developers.",
   generator: "v0.dev",
 };
 

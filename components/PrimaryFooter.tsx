@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import AnimatedUnderline from "./animated-underline";
-import { Button } from "./ui/button";
+import SignupForm from "./SignupForm";
 
 const PrimaryFooter = () => {
   const currentYear = new Date().getFullYear();
@@ -21,20 +21,7 @@ const PrimaryFooter = () => {
                 Get the latest updates on creative coding with AI
               </p>
             </div>
-            <div className="w-full max-w-sm space-y-2">
-              <form className="flex space-x-2">
-                <input
-                  className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                  placeholder="Enter your email"
-                  type="email"
-                  required
-                />
-                <Button type="submit">Subscribe</Button>
-              </form>
-              <p className="text-xs text-muted-foreground">
-                I'll never share your email with anyone else.
-              </p>
-            </div>
+            <SignupForm />
           </div>
         </div>
       </section>

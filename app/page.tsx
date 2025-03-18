@@ -29,15 +29,15 @@ export default async function Home() {
                 </p>
               </div>
               <div className="flex flex-col gap-2 min-[400px]:flex-row mt-4">
-                <Button asChild>
+                {/* <Button asChild>
                   <Link href="/projects">
-                    Explore AI Projects
+                    Explore My Projects
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
-                </Button>
-                <Button asChild variant="outline">
+                </Button> */}
+                <Button asChild>
                   <Link href="/blog">
-                    Read Blog
+                    Subscribe
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>

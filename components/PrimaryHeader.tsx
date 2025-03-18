@@ -22,12 +22,12 @@ const PrimaryHeader = () => {
             >
               Home
             </Link>
-            <Link
+            {/* <Link
               href="/projects"
               className="text-sm font-medium transition-colors hover:text-primary"
             >
               Projects
-            </Link>
+            </Link> */}
             <Link
               href="/blog"
               className="text-sm font-medium transition-colors hover:text-primary"

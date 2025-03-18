@@ -6,10 +6,10 @@ import styles from "./BlogHero.module.css";
 
 function BlogHero({ title, publishedOn, className, ...delegated }) {
   return (
-    <header className={clsx(styles.wrapper, className)} {...delegated}>
+    <header className="border-b pb-4 mb-6">
       <div className={styles.content}>
-        <h1>{title}</h1>
-        <p>
+        <h1 className="text-3xl font-bold text-gray-800">{title}</h1>
+        <p className="text-gray-600 mt-2">
           Published on{" "}
           <time dateTime={publishedOn}>{humanizedDate(publishedOn)}</time>
         </p>
@@ -17,5 +17,4 @@ function BlogHero({ title, publishedOn, className, ...delegated }) {
     </header>
   );
 }
-
 export default BlogHero;

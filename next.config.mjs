@@ -21,7 +21,8 @@ const nextConfig = {
     parallelServerBuildTraces: true,
     parallelServerCompiles: true,
   },
-}
+  transpilePackages: ["next-mdx-remote"],
+};
 
 mergeConfig(nextConfig, userConfig)
 
