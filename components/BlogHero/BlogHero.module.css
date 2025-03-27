@@ -14,8 +14,8 @@
   width: 100%;
   max-width: var(--content-width);
   padding: var(--viewport-padding);
-  padding-top: calc(48px + 8vw);
-  padding-bottom: 64px;
+  /* padding-top: calc(48px + 8vw); */
+  padding-bottom: 2rem;
 }
 
 .content h1 {

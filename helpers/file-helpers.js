@@ -19,8 +19,12 @@ export async function getBlogPostList() {
   }
 
   return blogPosts
-    .filter((project) => !project.tags.includes("project"))
+    .filter(
+      (project) =>
+        !project.tags.includes("project") && !project.tags.includes("hidden")
+    )
     .sort((p1, p2) => (p1.publishedOn < p2.publishedOn ? 1 : -1));
+  
 }
 
 export async function getProjectList() {

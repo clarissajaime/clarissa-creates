@@ -16,17 +16,14 @@ export default async function BlogContent({
 
 
   return (
-    <div className="container py-12 md:py-16 mx-auto max-w-2xl">
+    <div className="container py-12 md:py-16 mx-auto max-w-4xl">
       <BlogHero
         title={frontmatter.title}
         publishedOn={frontmatter.publishedOn}
         className=""
       />
       <article className="leading-relaxed space-y-4">
-          <MDXRemote
-            source={content}
-            components={COMPONENT_MAP}
-          />
+        <MDXRemote source={content} components={COMPONENT_MAP} />
       </article>
     </div>
   );

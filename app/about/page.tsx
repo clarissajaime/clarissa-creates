@@ -45,19 +45,19 @@ export default function AboutPage() {
 
               <div className="flex flex-wrap gap-3 mb-6">
                 <Button asChild variant="outline" size="sm">
-                  <Link href="https://github.com">
+                  <Link href="https://github.com/clarissajaime">
                     <Github className="mr-2 h-4 w-4" />
                     GitHub
                   </Link>
                 </Button>
                 <Button asChild variant="outline" size="sm">
-                  <Link href="https://linkedin.com">
+                  <Link href="https://www.linkedin.com/in/clarissajaime/">
                     <Linkedin className="mr-2 h-4 w-4" />
                     LinkedIn
                   </Link>
                 </Button>
                 <Button asChild variant="outline" size="sm">
-                  <Link href="mailto:contact@example.com">
+                  <Link href="mailto:clarissanjaime@gmail.com">
                     <Mail className="mr-2 h-4 w-4" />
                     Email
                   </Link>
@@ -144,8 +144,7 @@ export default function AboutPage() {
               <div className="border-l-2 border-primary pl-4 py-1">
                 <h3 className="font-bold">Software Engineering Instructor</h3>
                 <p className="text-sm text-muted-foreground">
-                  Austin Coding Academy, Agile Academy (Freelance) • Apr 2024 -
-                  Present
+                  Freelance • Apr 2024 - Present
                 </p>
                 <p className="mt-2">
                   Taught software engineering fundamentals and mentored students

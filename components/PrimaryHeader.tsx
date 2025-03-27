@@ -32,7 +32,7 @@ const PrimaryHeader = () => {
               href="/blog"
               className="text-sm font-medium transition-colors hover:text-primary"
             >
-              Tutorials
+              Blog
             </Link>
             <Link
               href="/about"

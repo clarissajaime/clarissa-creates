@@ -5,7 +5,7 @@ import { useEffect, useRef } from "react";
 import { useInView } from "framer-motion";
 
 export default function AnimatedH1() {
-  const text = ["Unleash Your Creativity", "with Coding and AI"]; // Split into two lines
+  const text = ["Unleash Your Creativity"]; // Split into two lines
   const controls = useAnimation();
   const ref = useRef(null);
   const isInView = useInView(ref, { amount: 0.3 }); // Detect when 30% of the section is in view
@@ -35,10 +35,16 @@ export default function AnimatedH1() {
       initial="hidden"
       animate={controls}
       exit="exit"
-      style={{ display: "inline-block", position: "relative", whiteSpace: "pre-line" }}
+      style={{
+        display: "inline-block",
+        position: "relative",
+        whiteSpace: "pre-line",
+      }}
     >
       {text.map((line, lineIndex) => (
-        <div key={lineIndex} style={{ display: "block" }}> {/* Creates a line break */}
+        <div key={lineIndex} style={{ display: "block" }}>
+          {" "}
+          {/* Creates a line break */}
           {line.split("").map((char, index) => (
             <motion.span
               key={index}

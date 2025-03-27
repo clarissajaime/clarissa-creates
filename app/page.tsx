@@ -24,23 +24,23 @@ export default async function Home() {
               <div className="space-y-2">
                 <AnimatedH1 />
                 <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl mt-8">
-                  Join us on a journey to explore innovative coding techniques
-                  and the limitless possibilities of AI.
+                  Transform your imagination into reality through code, AI, and
+                  creative design.
                 </p>
               </div>
               <div className="flex flex-col gap-2 min-[400px]:flex-row mt-4">
-                {/* <Button asChild>
-                  <Link href="/projects">
-                    Explore My Projects
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
-                </Button> */}
                 <Button asChild>
                   <Link href="/blog">
-                    Subscribe
+                    Explore My Blog
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>
+                {/* <Button asChild>
+                  <Link href="/blog">
+                    Read Blog
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button> */}
               </div>
             </div>
           </div>

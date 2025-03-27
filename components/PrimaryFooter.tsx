@@ -18,7 +18,8 @@ const PrimaryFooter = () => {
                 </AnimatedUnderline>
               </h2>
               <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl">
-                Get the latest updates on creative coding with AI
+                Get fresh insights, tips, and inspiration on creative coding and
+                AI—delivered straight to your inbox.
               </p>
             </div>
             <SignupForm />
