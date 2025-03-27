@@ -1,6 +1,13 @@
-let userConfig = undefined
+import path from "path";
+import { fileURLToPath } from "url";
+
+// Create equivalents for __dirname and __filename
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+let userConfig = undefined;
 try {
-  userConfig = await import('./v0-user-next.config')
+  userConfig = await import("./v0-user-next.config");
 } catch (e) {
   // ignore error
 }
@@ -16,6 +23,11 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  // Moved from experimental to root level
+  outputFileTracingRoot: path.join(__dirname),
+  outputFileTracingIncludes: {
+    "/**/*": ["content/**/*"], // Add this line to include all content files
+  },
   experimental: {
     webpackBuildWorker: true,
     parallelServerBuildTraces: true,
@@ -23,27 +35,26 @@ const nextConfig = {
   },
   transpilePackages: ["next-mdx-remote"],
 };
-
-mergeConfig(nextConfig, userConfig)
+mergeConfig(nextConfig, userConfig);
 
 function mergeConfig(nextConfig, userConfig) {
   if (!userConfig) {
-    return
+    return;
   }
 
   for (const key in userConfig) {
     if (
-      typeof nextConfig[key] === 'object' &&
+      typeof nextConfig[key] === "object" &&
       !Array.isArray(nextConfig[key])
     ) {
       nextConfig[key] = {
         ...nextConfig[key],
         ...userConfig[key],
-      }
+      };
     } else {
-      nextConfig[key] = userConfig[key]
+      nextConfig[key] = userConfig[key];
     }
   }
 }
 
-export default nextConfig
+export default nextConfig;
