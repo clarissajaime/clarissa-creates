@@ -64,3 +64,22 @@ function readDirectory(localPath) {
   return fs.readdir(path.join(process.cwd(), localPath));
 }
 
+// Add this function if it doesn't already exist
+export async function getAllPosts() {
+  // Implementation depends on how your blog posts are stored
+  // This is a simplified example
+  const files = await fs.readdir(path.join(process.cwd(), '/content'));
+  
+  const posts = await Promise.all(
+    files.map(async (filename) => {
+      const slug = filename.replace(/\.mdx$/, '');
+      const post = await loadBlogPost(slug);
+      return {
+        ...post,
+        slug,
+      };
+    })
+  );
+  
+  return posts;
+}
