@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import "./globals.css";
 import PrimaryHeader from "@/components/PrimaryHeader";
 import PrimaryFooter from "@/components/PrimaryFooter";
+import { GoogleTagManager } from "@next/third-parties/google";
 
 export const metadata: Metadata = {
   title: "Clarissa Creates",
@@ -17,6 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <GoogleTagManager gtmId="G-DHM1RTPW2J" />
       <body>
         <PrimaryHeader />
         {children}
