@@ -144,7 +144,7 @@ export default function AboutPage() {
               <div className="border-l-2 border-primary pl-4 py-1">
                 <h3 className="font-bold">Software Engineering Instructor</h3>
                 <p className="text-sm text-muted-foreground">
-                  Freelance • Apr 2024 - Present
+                  Maven & River • Apr 2024 - Present
                 </p>
                 <p className="mt-2">
                   Taught software engineering fundamentals and mentored students

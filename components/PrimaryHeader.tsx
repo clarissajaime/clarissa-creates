@@ -50,7 +50,7 @@ const PrimaryHeader = () => {
             size="icon"
             className="rounded-full"
           >
-            <Link href="https://github.com">
+            <Link href="https://github.com/clarissajaime">
               <Github className="h-4 w-4" />
               <span className="sr-only">GitHub</span>
             </Link>
@@ -61,7 +61,7 @@ const PrimaryHeader = () => {
             size="icon"
             className="rounded-full"
           >
-            <Link href="https://linkedin.com">
+            <Link href="https://linkedin.com/in/clarissajaime">
               <Linkedin className="h-4 w-4" />
               <span className="sr-only">LinkedIn</span>
             </Link>

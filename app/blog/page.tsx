@@ -16,8 +16,8 @@ export default function BlogPage() {
       </div>
 
       <p className="text-muted-foreground max-w-3xl mb-8">
-        Articles, insights, and tutorials on education, learning strategies, and
-        the intersection of technology and teaching.
+        Articles, insights, and tutorials on the intersection of technology and
+        art.
       </p>
 
       <Suspense fallback={<BlogSkeleton />}>
