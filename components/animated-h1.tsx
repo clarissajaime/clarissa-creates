@@ -31,7 +31,7 @@ export default function AnimatedH1() {
   return (
     <motion.h1
       ref={ref}
-      className="framer-text text-4xl md:text-6xl font-bold text-center leading-tight mb-5"
+      className="framer-text text-4xl md:text-6xl font-bold text-center leading-tight mb-5 text-primary"
       initial="hidden"
       animate={controls}
       exit="exit"
