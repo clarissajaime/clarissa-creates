@@ -5,6 +5,7 @@ import { loadBlogPost } from "@/helpers/file-helpers";
 import COMPONENT_MAP from "@/helpers/mdx-helpers";
 import { TableOfContents } from "@/components/TableOfContents";
 import { extractHeadings } from "@/helpers/toc-helpers";
+import BlogSkeleton from "@/components/blog-skeleton";
 
 export default async function BlogContent({
   params,
@@ -18,18 +19,20 @@ export default async function BlogContent({
   const tableOfContents = extractHeadings(content);
 
   return (
-    <div className="container py-12 md:py-16 mx-auto max-w-6xl">
-      <BlogHero
-        title={frontmatter.title}
-        publishedOn={frontmatter.publishedOn}
-        className=""
-      />
-      <div className="flex flex-col lg:flex-row gap-12">
-        <article className="prose prose-sm sm:prose lg:prose-lg dark:prose-invert flex-1 leading-relaxed max-w-none">
-          <MDXRemote source={content} components={COMPONENT_MAP} />
-        </article>
-        <TableOfContents items={tableOfContents} />
+    <Suspense fallback={<BlogSkeleton />}>
+      <div className="container py-12 md:py-16 mx-auto max-w-6xl">
+        <BlogHero
+          title={frontmatter.title}
+          publishedOn={frontmatter.publishedOn}
+          className=""
+        />
+        <div className="flex flex-col lg:flex-row gap-12">
+          <article className="prose prose-sm sm:prose lg:prose-lg dark:prose-invert flex-1 leading-relaxed max-w-none">
+            <MDXRemote source={content} components={COMPONENT_MAP} />
+          </article>
+          <TableOfContents items={tableOfContents} />
+        </div>
       </div>
-    </div>
+    </Suspense>
   );
 }
