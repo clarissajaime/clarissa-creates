@@ -21,10 +21,11 @@ export async function getBlogPostList() {
   return blogPosts
     .filter(
       (project) =>
-        !project.tags.includes("project") && !project.tags.includes("hidden")
+        project.tags &&
+        !project.tags.includes("project") &&
+        !project.tags.includes("hidden")
     )
     .sort((p1, p2) => (p1.publishedOn < p2.publishedOn ? 1 : -1));
-  
 }
 
 export async function getProjectList() {
@@ -44,9 +45,10 @@ export async function getProjectList() {
   }
 
   return projects
-    .filter((project) => project.tags.includes("project"))
+    .filter((project) => project.tags && project.tags.includes("project"))
     .sort((p1, p2) => (p1.publishedOn < p2.publishedOn ? 1 : -1));
 }
+
 
 export async function loadBlogPost(slug) {
   const rawContent = await readFile(`/content/${slug}.mdx`);
