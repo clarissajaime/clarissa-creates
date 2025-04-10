@@ -1,12 +1,16 @@
 import { getBlogPostList } from "@/helpers/file-helpers";
-import BlogCard from "./blog-card";
+import dynamic from "next/dynamic";
 
-export default async function BlogList() {
-  const posts = await getBlogPostList();
+const BlogCard = dynamic(() => import("./blog-card"), {
+  loading: () => <div className="h-64 bg-muted rounded animate-pulse"></div>,
+});
+
+export default async function BlogList({ postsPerPage = 6 }) {
+  const allPosts = await getBlogPostList();
 
   return (
     <div className="grid gap-8">
-      {posts.map((post) => (
+      {allPosts.slice(0, postsPerPage).map((post) => (
         <BlogCard
           key={post.slug}
           slug={post.slug}

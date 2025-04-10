@@ -40,7 +40,7 @@ const BlogCard = ({
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 0.3 }} // Reduced from 0.5
         viewport={{ once: true, amount: 0.3 }}
       >
         <Card key={slug} className="overflow-hidden">
@@ -50,14 +50,14 @@ const BlogCard = ({
                 src={image || "/placeholder.svg"}
                 alt={title}
                 fill
-                sizes="(max-width: 768px) 100vw, 33vw"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" // More specific sizes
                 priority={false}
                 loading="lazy"
                 className={cn(
                   "object-cover transition-opacity duration-500",
                   imageLoading ? "opacity-0" : "opacity-100"
                 )}
-                quality={85}
+                quality={80} // Slightly reduced from 85 for faster loading
                 onLoadingComplete={() => setImageLoading(false)}
                 placeholder="blur"
                 blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg=="
