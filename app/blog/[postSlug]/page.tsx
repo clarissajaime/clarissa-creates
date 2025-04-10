@@ -18,8 +18,13 @@ export default async function BlogContent({
   // Get all posts to find the next one
   const allPosts = await getAllPosts();
 
+  // Filter out posts with the hidden tag
+  const visiblePosts = allPosts.filter(
+    (post) => !post.frontmatter.tags?.includes("hidden")
+  );
+
   // Sort posts by date (newest first)
-  const sortedPosts = allPosts.sort(
+  const sortedPosts = visiblePosts.sort(
     (a, b) =>
       new Date(b.frontmatter.publishedOn).getTime() -
       new Date(a.frontmatter.publishedOn).getTime()
