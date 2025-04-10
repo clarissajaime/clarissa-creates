@@ -1,6 +1,7 @@
 import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import ProjectCard from "@/components/project-card";
+import Image from "next/image";
 
 function BlogSummaryCard({ slug, title, publishedOn, abstract, tags, image }) {
   const href = `/${slug}`;
@@ -15,6 +16,7 @@ function BlogSummaryCard({ slug, title, publishedOn, abstract, tags, image }) {
             tags={tags}
             link={href}
             date={publishedOn}
+            useNextImage={true} // Add this prop to indicate using Next.js Image
           />
         </div>
       </CardContent>

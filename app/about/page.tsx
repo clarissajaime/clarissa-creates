@@ -7,6 +7,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import AnimatedGradientText from "@/components/animated-gradient-text";
 import AnimatedDoodles from "@/components/animated-doodles";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function AboutPage() {
   return (
@@ -31,10 +32,13 @@ export default function AboutPage() {
           <Card>
             <CardContent className="p-6">
               <div className="aspect-square overflow-hidden rounded-full mb-6">
-                <img
-                  src="/profile-purple.png?height=300&width=300"
+                <Image
+                  src="/profile-purple.png"
                   alt="Profile"
+                  width={300}
+                  height={300}
                   className="h-full w-full object-cover"
+                  priority
                 />
               </div>
 

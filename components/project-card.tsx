@@ -3,21 +3,30 @@
 import Link from "next/link"
 import { ArrowUpRight } from "lucide-react"
 import { motion } from "framer-motion"
+import Image from "next/image";
 
-import { cn } from "@/lib/utils"
-import { Badge } from "@/components/ui/badge"
+import { cn } from "@/lib/utils";
+import { Badge } from "@/components/ui/badge";
 
 interface ProjectCardProps {
-  title: string
-  description: string
-  image: string
-  tags: string[]
-  link: string
-  className?: string
-  date: Date
+  title: string;
+  description: string;
+  image: string;
+  tags: string[];
+  link: string;
+  className?: string;
+  date: Date;
 }
 
-export default function ProjectCard({ title, description, image, tags, link, className, date }: ProjectCardProps) {
+export default function ProjectCard({
+  title,
+  description,
+  image,
+  tags,
+  link,
+  className,
+  date,
+}: ProjectCardProps) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -33,13 +42,16 @@ export default function ProjectCard({ title, description, image, tags, link, cla
         )}
       >
         <div className="relative aspect-video overflow-hidden rounded-t-lg">
-          <motion.img
-            src={image || "/placeholder.svg"}
-            alt={title}
-            className="object-cover w-full h-full"
-            whileHover={{ scale: 1.05 }}
-            transition={{ duration: 0.3 }}
-          />
+          <div className="w-full h-full">
+            <Image
+              src={image || "/placeholder.svg"}
+              alt={title}
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              className="object-cover transition-transform duration-300 group-hover:scale-105"
+              priority={false}
+            />
+          </div>
         </div>
         <div className="p-4 bg-card rounded-b-lg border border-t-0">
           <h3 className="font-semibold text-lg leading-tight group-hover:text-primary transition-colors flex items-center">

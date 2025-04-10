@@ -3,7 +3,7 @@
 import { humanizedDate } from "@/helpers/date-helpers";
 import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge"
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "./ui/button";
 import {
   Card,
@@ -14,7 +14,9 @@ import {
   CardFooter,
 } from "./ui/card";
 import Link from "next/link";
+import Image from "next/image";
 import { CalendarIcon } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 const BlogCard = ({
   slug,
@@ -31,6 +33,8 @@ const BlogCard = ({
   tags?: string[];
   image?: string;
 }) => {
+  const [imageLoading, setImageLoading] = useState(true);
+
   return (
     <div>
       <motion.div
@@ -41,12 +45,28 @@ const BlogCard = ({
       >
         <Card key={slug} className="overflow-hidden">
           <div className="md:flex">
-            <div className="md:w-1/3 h-48 md:h-auto">
-              <img
+            <div className="md:w-1/3 h-48 md:h-auto relative bg-muted">
+              <Image
                 src={image || "/placeholder.svg"}
                 alt={title}
-                className="h-full w-full object-cover"
+                fill
+                sizes="(max-width: 768px) 100vw, 33vw"
+                priority={false}
+                loading="lazy"
+                className={cn(
+                  "object-cover transition-opacity duration-500",
+                  imageLoading ? "opacity-0" : "opacity-100"
+                )}
+                quality={85}
+                onLoadingComplete={() => setImageLoading(false)}
+                placeholder="blur"
+                blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg=="
               />
+              {imageLoading && (
+                <div className="absolute inset-0 flex items-center justify-center bg-muted">
+                  <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin"></div>
+                </div>
+              )}
             </div>
             <div className="md:w-2/3 p-6">
               <CardHeader className="p-0 pb-4">
