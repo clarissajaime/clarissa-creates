@@ -142,13 +142,13 @@ export default function AboutPage() {
             <h2 className="text-2xl font-bold mb-4">Experience</h2>
             <div className="space-y-4">
               <div className="border-l-2 border-primary pl-4 py-1">
-                <h3 className="font-bold">Software Engineering Instructor</h3>
+                <h3 className="font-bold">Software Engineer</h3>
                 <p className="text-sm text-muted-foreground">
                   Maven & River • Apr 2024 - Present
                 </p>
                 <p className="mt-2">
-                  Taught software engineering fundamentals and mentored students
-                  in product management.
+                  Create educational products focused on software engineering
+                  fundamentals.
                 </p>
               </div>
               <div className="border-l-2 border-muted pl-4 py-1">
