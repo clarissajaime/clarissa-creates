@@ -63,7 +63,7 @@ const BlogCard = ({
                   imageLoading ? "opacity-0" : "opacity-100"
                 )}
                 quality={80}
-                onLoadingComplete={() => setImageLoading(false)}
+                onLoad={() => setImageLoading(false)}
                 placeholder="blur"
                 blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg=="
               />
