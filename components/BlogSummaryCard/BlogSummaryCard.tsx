@@ -164,7 +164,7 @@ const BlogSummaryCard = memo(function BlogSummaryCard({
                 }}
                 priority={isPriority}
                 quality={85}
-                onLoadingComplete={handleImageLoad}
+                onLoad={handleImageLoad}
                 onError={handleImageError}
                 loading={isPriority ? "eager" : "lazy"}
                 placeholder="blur"
