@@ -1,28 +1,30 @@
 import { getBlogPostList } from "@/helpers/file-helpers";
 import dynamic from "next/dynamic";
+import ClientBlogList from "./client-blog-list";
+
+// Define types for blog post
+export interface BlogPost {
+  slug: string;
+  title: string;
+  publishedOn: string;
+  abstract: string;
+  tags?: string[];
+  image?: string;
+}
 
 const BlogCard = dynamic(() => import("./blog-card"), {
   loading: () => <div className="h-64 bg-muted rounded animate-pulse"></div>,
 });
 
-export default async function BlogList({ postsPerPage = 6 }) {
+// This remains a server component
+export default async function BlogList({
+  postsPerPage = 6,
+}: {
+  postsPerPage?: number;
+}) {
+  // Fetch data on the server
   const allPosts = await getBlogPostList();
-  const visiblePosts = allPosts.slice(0, postsPerPage);
 
-  return (
-    <div className="grid gap-8">
-      {visiblePosts.map((post) => (
-        <BlogCard
-          key={post.slug}
-          slug={post.slug}
-          title={post.title}
-          publishedOn={post.publishedOn}
-          abstract={post.abstract}
-          tags={post.tags}
-          image={post.image}
-          priority={true}
-        />
-      ))}
-    </div>
-  );
+  // Pass data to client component
+  return <ClientBlogList initialPosts={allPosts} postsPerPage={postsPerPage} />;
 }
