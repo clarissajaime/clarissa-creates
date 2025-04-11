@@ -25,6 +25,8 @@ const BlogCard = ({
   abstract,
   tags,
   image,
+  priority = false,
+  preload = false,
 }: {
   slug: string;
   title: string;
@@ -32,6 +34,8 @@ const BlogCard = ({
   abstract: string;
   tags?: string[];
   image?: string;
+  priority?: boolean;
+  preload?: boolean;
 }) => {
   const [imageLoading, setImageLoading] = useState(true);
 
@@ -40,8 +44,8 @@ const BlogCard = ({
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.3 }} // Reduced from 0.5
-        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.3 }}
+        viewport={{ once: true, amount: 0.1 }}
       >
         <Card key={slug} className="overflow-hidden">
           <div className="md:flex">
@@ -50,18 +54,20 @@ const BlogCard = ({
                 src={image || "/placeholder.svg"}
                 alt={title}
                 fill
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" // More specific sizes
-                priority={false}
-                loading="lazy"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                priority={priority} // Use priority prop
+                // Remove the loading prop when priority is true
+                {...(!priority && { loading: "lazy" })} // Only add loading="lazy" when priority is false
                 className={cn(
                   "object-cover transition-opacity duration-500",
                   imageLoading ? "opacity-0" : "opacity-100"
                 )}
-                quality={80} // Slightly reduced from 85 for faster loading
+                quality={80}
                 onLoadingComplete={() => setImageLoading(false)}
                 placeholder="blur"
                 blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg=="
               />
+
               {imageLoading && (
                 <div className="absolute inset-0 flex items-center justify-center bg-muted">
                   <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin"></div>

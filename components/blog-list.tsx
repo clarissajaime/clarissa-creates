@@ -7,10 +7,11 @@ const BlogCard = dynamic(() => import("./blog-card"), {
 
 export default async function BlogList({ postsPerPage = 6 }) {
   const allPosts = await getBlogPostList();
+  const visiblePosts = allPosts.slice(0, postsPerPage);
 
   return (
     <div className="grid gap-8">
-      {allPosts.slice(0, postsPerPage).map((post) => (
+      {visiblePosts.map((post) => (
         <BlogCard
           key={post.slug}
           slug={post.slug}
@@ -19,6 +20,7 @@ export default async function BlogList({ postsPerPage = 6 }) {
           abstract={post.abstract}
           tags={post.tags}
           image={post.image}
+          priority={true}
         />
       ))}
     </div>
