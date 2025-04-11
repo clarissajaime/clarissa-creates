@@ -1,10 +1,51 @@
 'use client';
 
-import { useEffect, useRef } from "react";
+import { useRef, useState } from "react";
 import Script from "next/script";
 
 export default function SignupForm() {
-  const formRef = useRef<HTMLDivElement>(null);
+  const formRef = useRef<HTMLFormElement>(null);
+  const [status, setStatus] = useState<
+    "idle" | "loading" | "success" | "error"
+  >("idle");
+  const [message, setMessage] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!formRef.current) return;
+
+    setStatus("loading");
+
+    try {
+      const formData = new FormData(formRef.current);
+
+      const response = await fetch(
+        "https://app.kit.com/forms/7909209/subscriptions",
+        {
+          method: "POST",
+          body: formData,
+          headers: {
+            Accept: "application/json",
+          },
+        }
+      );
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setStatus("success");
+        setMessage("Thanks for subscribing!");
+        formRef.current.reset();
+      } else {
+        setStatus("error");
+        setMessage(data.message || "Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      setStatus("error");
+      setMessage("Something went wrong. Please try again.");
+    }
+  };
 
   return (
     <>
@@ -15,20 +56,29 @@ export default function SignupForm() {
 
       <div className="w-full max-w-md">
         <form
-          action="https://app.kit.com/forms/7909209/subscriptions"
+          ref={formRef}
+          onSubmit={handleSubmit}
           className="seva-form formkit-form"
-          method="post"
           data-sv-form="7909209"
           data-uid="df65f9132e"
           data-format="inline"
           data-version="5"
         >
           <div data-style="clean">
-            <ul
-              className="formkit-alert formkit-alert-error"
-              data-element="errors"
-              data-group="alert"
-            ></ul>
+            {status === "error" && (
+              <ul
+                className="formkit-alert formkit-alert-error"
+                data-element="errors"
+                data-group="alert"
+              >
+                <li>{message}</li>
+              </ul>
+            )}
+            {status === "success" && (
+              <div className="formkit-alert formkit-alert-success p-2 mb-4 bg-green-100 text-green-800 rounded">
+                {message}
+              </div>
+            )}
             <div
               data-element="fields"
               data-stacked="false"
@@ -47,13 +97,20 @@ export default function SignupForm() {
               <button
                 data-element="submit"
                 className="formkit-submit bg-violet-600 hover:bg-violet-700 text-white rounded-md px-4 py-2"
+                type="submit"
+                disabled={status === "loading"}
               >
-                <div className="formkit-spinner">
+                <div
+                  className="formkit-spinner"
+                  style={{ display: status === "loading" ? "block" : "none" }}
+                >
                   <div></div>
                   <div></div>
                   <div></div>
                 </div>
-                <span>Subscribe</span>
+                <span>
+                  {status === "loading" ? "Submitting..." : "Subscribe"}
+                </span>
               </button>
             </div>
             <div className="formkit-powered-by-convertkit-container text-xs text-muted-foreground mt-2">
