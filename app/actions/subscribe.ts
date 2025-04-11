@@ -1,5 +1,7 @@
 'use server';
 
+// OUTDATED, NOT CURRENTLY IN USE
+
 import { query } from '@/lib/db';
 
 export async function subscribe(email: string | string[]) {

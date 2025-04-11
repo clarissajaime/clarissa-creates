@@ -1,48 +1,76 @@
 'use client';
 
-import { useState, useTransition } from 'react';
-import { subscribe } from '@/app/actions/subscribe';
-import { Button } from '@/components/ui/button'; // Assuming you're using shadcn/ui
+import { useEffect, useRef } from "react";
+import Script from "next/script";
 
 export default function SignupForm() {
-  const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
-  const [isPending, startTransition] = useTransition();
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    startTransition(async () => {
-      const response = await subscribe(email);
-      setMessage(response);
-      setEmail('');
-    });
-  };
+  const formRef = useRef<HTMLDivElement>(null);
 
   return (
-    <div className="w-full max-w-sm space-y-2">
-      <form className="flex space-x-2" onSubmit={handleSubmit}>
-        <input
-          className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-          placeholder="Enter your email"
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-          disabled={isPending}
-        />
-        <Button type="submit" disabled={isPending}>
-          {isPending ? '...' : 'Subscribe'}
-        </Button>
-      </form>
-      <p className="text-xs text-muted-foreground">
-        I'll never share your email with anyone else.
-      </p>
-      {message && (
-        <p className="text-xs mt-1">
-          {message}
-        </p>
-      )}
-    </div>
+    <>
+      <Script
+        src="https://f.convertkit.com/ckjs/ck.5.js"
+        strategy="lazyOnload"
+      />
+
+      <div className="w-full max-w-md">
+        <form
+          action="https://app.kit.com/forms/7909209/subscriptions"
+          className="seva-form formkit-form"
+          method="post"
+          data-sv-form="7909209"
+          data-uid="df65f9132e"
+          data-format="inline"
+          data-version="5"
+        >
+          <div data-style="clean">
+            <ul
+              className="formkit-alert formkit-alert-error"
+              data-element="errors"
+              data-group="alert"
+            ></ul>
+            <div
+              data-element="fields"
+              data-stacked="false"
+              className="seva-fields formkit-fields flex space-x-2"
+            >
+              <div className="formkit-field flex-grow">
+                <input
+                  className="formkit-input w-full h-10 rounded-md border border-input bg-background px-3 py-2 text-sm"
+                  name="email_address"
+                  aria-label="Email Address"
+                  placeholder="Email Address"
+                  required
+                  type="email"
+                />
+              </div>
+              <button
+                data-element="submit"
+                className="formkit-submit bg-violet-600 hover:bg-violet-700 text-white rounded-md px-4 py-2"
+              >
+                <div className="formkit-spinner">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </div>
+                <span>Subscribe</span>
+              </button>
+            </div>
+            <div className="formkit-powered-by-convertkit-container text-xs text-muted-foreground mt-2">
+              <a
+                href="https://kit.com/features/forms"
+                data-element="powered-by"
+                className="formkit-powered-by-convertkit"
+                data-variant="dark"
+                target="_blank"
+                rel="nofollow"
+              >
+                Built with Kit
+              </a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </>
   );
 }

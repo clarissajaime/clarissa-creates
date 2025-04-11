@@ -5,6 +5,7 @@ import SignupForm from "./SignupForm";
 
 const PrimaryFooter = () => {
   const currentYear = new Date().getFullYear();
+  
   return (
     <div>
       <section className="w-full py-12 md:py-24 lg:py-32 bg-muted">
@@ -26,6 +27,7 @@ const PrimaryFooter = () => {
           </div>
         </div>
       </section>
+
       <footer className="w-full border-t py-6 md:py-0">
         <div className="container flex flex-col items-center justify-between gap-4 md:h-24 md:flex-row">
           <p className="text-center text-sm leading-loose text-muted-foreground md:text-left">
