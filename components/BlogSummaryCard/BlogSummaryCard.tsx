@@ -4,14 +4,13 @@ import React, { useState, useCallback, memo } from "react";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ArrowUpRight, Clock } from "lucide-react";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion, Variants } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-import PropTypes from "prop-types";
 import { cn } from "@/lib/utils";
 
 // Animation variants extracted to constants
-const ANIMATION_VARIANTS = {
+const ANIMATION_VARIANTS: Record<string, Variants> = {
   image: {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { duration: 0.5 } },
@@ -48,12 +47,24 @@ const CardSkeleton = () => (
 );
 
 // Calculate read time based on content length
-const calculateReadTime = (abstract) => {
+const calculateReadTime = (abstract?: string): number => {
   if (!abstract) return 1;
   const wordsPerMinute = 200;
   const wordCount = abstract.trim().split(/\s+/).length;
   return Math.max(1, Math.ceil(wordCount / wordsPerMinute));
 };
+
+interface BlogSummaryCardProps {
+  slug: string;
+  title?: string;
+  publishedOn?: string;
+  abstract?: string;
+  tags?: string[];
+  image?: string;
+  isPriority?: boolean;
+  isLoading?: boolean;
+  className?: string;
+}
 
 // Memoized component to prevent unnecessary re-renders
 const BlogSummaryCard = memo(function BlogSummaryCard({
@@ -66,7 +77,7 @@ const BlogSummaryCard = memo(function BlogSummaryCard({
   isPriority = false,
   isLoading = false,
   className,
-}) {
+}: BlogSummaryCardProps) {
   const href = `/${slug}`;
   const [imageLoading, setImageLoading] = useState(true);
   const [imageError, setImageError] = useState(false);
@@ -144,11 +155,9 @@ const BlogSummaryCard = memo(function BlogSummaryCard({
                 alt={`Featured image for article: ${safeTitle}`}
                 fill
                 sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                className={`
-                  object-cover will-change-transform
+                className={`object-cover will-change-transform
                   transition-transform duration-300
-                  group-hover:scale-105 group-focus:scale-105
-                `}
+                  group-hover:scale-105 group-focus:scale-105`}
                 style={{
                   opacity: imageLoading ? 0 : 1,
                   transition: "opacity 0.5s ease",
@@ -180,7 +189,6 @@ const BlogSummaryCard = memo(function BlogSummaryCard({
               <ArrowUpRight className="h-4 w-4" />
             </motion.span>
           </h3>
-
           <div className="flex justify-between items-center mt-2">
             {publishedOn && (
               <p className="text-sm text-muted-foreground">
@@ -189,7 +197,6 @@ const BlogSummaryCard = memo(function BlogSummaryCard({
                 </time>
               </p>
             )}
-
             <div
               className="flex items-center text-sm text-muted-foreground"
               aria-label={`${readTime} minute read`}
@@ -198,11 +205,9 @@ const BlogSummaryCard = memo(function BlogSummaryCard({
               <span>{readTime} min read</span>
             </div>
           </div>
-
           <p className="mt-2 text-sm md:text-base text-muted-foreground line-clamp-2 sm:line-clamp-2 md:line-clamp-3">
             {safeAbstract}
           </p>
-
           <div
             className="mt-auto pt-3 flex flex-wrap gap-2"
             aria-label="Article tags"
@@ -218,20 +223,6 @@ const BlogSummaryCard = memo(function BlogSummaryCard({
     </motion.div>
   );
 });
-
-// Add prop validation
-BlogSummaryCard.propTypes = {
-  slug: PropTypes.string.isRequired,
-  title: PropTypes.string,
-  publishedOn: PropTypes.string,
-  abstract: PropTypes.string,
-  tags: PropTypes.arrayOf(PropTypes.string),
-  image: PropTypes.string,
-  isPriority: PropTypes.bool,
-  isLoading: PropTypes.bool,
-  className: PropTypes.string,
-};
-
 // Display name for debugging purposes
 BlogSummaryCard.displayName = "BlogSummaryCard";
 
