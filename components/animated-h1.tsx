@@ -1,20 +1,37 @@
 "use client";
 
 import { motion, useAnimation } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useInView } from "framer-motion";
 
 export default function AnimatedH1() {
-  const text = ["Unleash Your Creativity"]; // Split into two lines
+  const text = ["Unleash Your Creativity"];
   const controls = useAnimation();
   const ref = useRef(null);
-  const isInView = useInView(ref, { amount: 0.3 }); // Detect when 30% of the section is in view
+  const isInView = useInView(ref, { amount: 0.3 });
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    // Check if we're on mobile
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    // Initial check
+    checkMobile();
+
+    // Add resize listener
+    window.addEventListener("resize", checkMobile);
+
+    // Cleanup
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   useEffect(() => {
     if (isInView) {
       controls.start("visible");
     } else {
-      controls.start("exit"); // Disappear when out of view
+      controls.start("exit");
     }
   }, [isInView, controls]);
 
@@ -25,7 +42,17 @@ export default function AnimatedH1() {
       y: 0,
       transition: { delay: i * 0.05, duration: 0.6 },
     }),
-    exit: { opacity: 0, y: -20, transition: { duration: 0.6 } }, // Moves up and disappears on scroll
+    exit: { opacity: 0, y: -20, transition: { duration: 0.6 } },
+  };
+
+  const wordVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: (i) => ({
+      opacity: 1,
+      y: 0,
+      transition: { delay: i * 0.1, duration: 0.6 },
+    }),
+    exit: { opacity: 0, y: -20, transition: { duration: 0.6 } },
   };
 
   return (
@@ -43,23 +70,38 @@ export default function AnimatedH1() {
     >
       {text.map((line, lineIndex) => (
         <div key={lineIndex} style={{ display: "block" }}>
-          {" "}
-          {/* Creates a line break */}
-          {line.split("").map((char, index) => (
-            <motion.span
-              key={index}
-              className="char"
-              style={{
-                display: "inline-block",
-                whiteSpace: char === " " ? "pre" : "normal", // Ensures spaces are kept
-                minWidth: char === " " ? "0.3em" : "auto", // Adds spacing for readability
-              }}
-              variants={charVariants}
-              custom={index + lineIndex * 10} // Stagger animation across lines
-            >
-              {char === " " ? "\u00A0" : char} {/* Keeps spaces visible */}
-            </motion.span>
-          ))}
+          {isMobile
+            ? // On mobile, animate by words
+              line.split(" ").map((word, wordIndex) => (
+                <motion.span
+                  key={wordIndex}
+                  className="word"
+                  style={{
+                    display: "inline-block",
+                    marginRight: "0.3em",
+                  }}
+                  variants={wordVariants}
+                  custom={wordIndex}
+                >
+                  {word}
+                </motion.span>
+              ))
+            : // On desktop, animate by characters
+              line.split("").map((char, index) => (
+                <motion.span
+                  key={index}
+                  className="char"
+                  style={{
+                    display: "inline-block",
+                    whiteSpace: char === " " ? "pre" : "normal",
+                    minWidth: char === " " ? "0.3em" : "auto",
+                  }}
+                  variants={charVariants}
+                  custom={index + lineIndex * 10}
+                >
+                  {char === " " ? "\u00A0" : char}
+                </motion.span>
+              ))}
         </div>
       ))}
     </motion.h1>
